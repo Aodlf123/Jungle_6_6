@@ -19,7 +19,7 @@ body {
 }
 
 .box {
-  background-image: url(./img/junglefinder.png);
+  background-image: url(../img/junglefinder.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: -50px;

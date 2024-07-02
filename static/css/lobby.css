@@ -12,7 +12,7 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  border: 2px solid brown;
+  border: 2px solid rgb(104, 255, 164);
 }
 
 .box_body {

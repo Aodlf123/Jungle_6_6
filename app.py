@@ -57,7 +57,7 @@ def signup():
         user_data = {'username': username, 'password': hashed_password}
         db.users.insert_one(user_data)
         return jsonify({'message': 'User created successfully'}), 201
-    return render_template('signup.html')
+    return render_template('membership.html')
 
 # 로그인 라우트
 @app.route('/login', methods=['GET', 'POST'])
@@ -67,9 +67,8 @@ def login():
         password = request.form['password']
 
         user = db.users.find_one({'username': username})
-        print(username)
-        print(list(db.users.find()))
-        if not user:    # or not check_password_hash(user['password'], password):
+
+        if not user or not check_password_hash(user['password'], password):
             return jsonify({'message': 'Invalid credentials'}), 401
 
         access_token = jwt.encode(
@@ -83,7 +82,7 @@ def login():
         resp.set_cookie('access_token', access_token, httponly=True)
         resp.set_cookie('refresh_token', refresh_token, httponly=True)
         return resp
-    return render_template('login.html')
+    return render_template('main.html')
 
 # Access Token 갱신 라우트
 @app.route('/refresh', methods=['POST'])
@@ -114,13 +113,19 @@ def logout():
     resp.delete_cookie('refresh_token')
     return resp
 
-# 메인 페이지 라우트 (로그인 필요)
+# 메인 페이지 라우트 (토큰 인증 필요)
 @app.route('/')
 def index():
     try:
         decorated_function = token_required(render_template)
-        print('token is valid')
-        return decorated_function('index.html')
+        #print('token is valid')
+        try:
+            keyword_list = sorted(list(db.keywords.find({})), key=lambda x: x['count'], reverse=True)
+            post_list = sorted(list(db.posts.find({})), key=lambda x: x['date'], reverse=True)
+        
+            return decorated_function('lobby.html', keywords = keyword_list, posts = post_list)
+        except Exception as e:
+            return jsonify({'message': 'db connection error'}), 400
     except Exception as e:  # token_required에서 발생하는 예외를 처리
         return redirect(url_for('login'))  # 로그인 페이지로 리다이렉트
 
