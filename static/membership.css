@@ -1,0 +1,48 @@
+body {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.box {
+  border: 2px solid brown;
+  box-shadow: green 0 0 10px;
+  width: 600px;
+  height: 700px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  color: brown;
+  margin-bottom: 80px;
+}
+
+.input {
+  border: 2px solid black;
+}
+
+.button {
+  border: 2px solid black;
+  background: lightgray;
+  height: 40px;
+}
+
+#id {
+  width: 228px;
+}
+
+.field {
+  width: 300px;
+}
+
+#login {
+  color: black;
+}
+
+.tail {
+    margin-top: 20px;
+}

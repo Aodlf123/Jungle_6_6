@@ -1,0 +1,57 @@
+body {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.field {
+  width: 300px;
+}
+
+.header {
+  margin-bottom: 100px;
+}
+
+.title {
+  font-weight: bold;
+  color: brown;
+}
+
+.box {
+  background-image: url(./img/junglefinder.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: -50px;
+  width: 600px;
+  height: 700px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login {
+  padding: 3;
+  margin: 30px 0px;
+  border: solid 2px black;
+  background-color: white;
+  font-size: 18px;
+}
+
+.input {
+  border: solid 2px black;
+}
+
+.a1 {
+  color: black;
+}
+
+.a2 {
+  color: white;
+}
+
+.membership {
+  border: solid 2px white;
+  background: black;
+}

@@ -1,0 +1,34 @@
+body {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.box {
+  width: 600px;
+  height: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid brown;
+}
+
+.header {
+  width: 500px;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  margin-bottom: 20px;
+}
+
+.prev, .logout {
+  color: black;
+}
+
+.my_post {
+    margin: 20px 0px;
+    width: 500px;
+    height: 300px;
+    overflow-y: auto;
+}

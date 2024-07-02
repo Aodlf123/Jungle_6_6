@@ -1,0 +1,80 @@
+body {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.box {
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid brown;
+}
+
+.header {
+  width: 500px;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  margin-bottom: 20px;
+}
+
+.prev {
+  color: black;
+}
+
+.question {
+  margin-bottom: 20px;
+}
+
+.q_area {
+  width: 500px;
+  height: 300px;
+}
+
+.answer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.a_area {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  min-height: 40px;
+  border-bottom: 1px solid lightgray;
+}
+
+.a_main,
+.a_sub {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.a_option {
+  display: flex;
+  flex-direction: row;
+}
+
+.comment,
+.like,
+.delete {
+  margin-left: 10px;
+}
+
+.a_sub_detail {
+  position: relative;
+  left: 30px;
+}
+
+.post_answer {
+  width: 500px;
+  height: 30px;
+  margin-top: 20px;
+}
