@@ -14,10 +14,10 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-
   /* border: 2px solid brown; */
   box-shadow: none;
-  background: lightgreen;
+  background-image: url(./img/background.jpg);
+  background-size: cover;
 }
 
 .main {
@@ -52,10 +52,9 @@ body {
 .q_area {
   word-break: break-all;
   width: 500px;
-  height: 300px;
-  border: 1px solid lightgray;
+  min-height: 300px;
+  border-bottom: 2px dashed gray;
   border-radius: 5px;
-  overflow-y: auto;
 }
 
 .answer {
