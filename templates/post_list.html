@@ -1,0 +1,10 @@
+{% for item in posts %}
+<div class="content1">
+    <a href="/post/{{ item._id }}">
+        <h1 class="title">{{ item.title }}</h1>
+    </a>
+    <a href="/post/{{ item._id }}">
+        <h2 class="subtitle">{{ item.text }}</h2>
+    </a>
+</div>
+{% endfor %}

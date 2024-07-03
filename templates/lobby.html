@@ -10,6 +10,7 @@
     />
     <link rel="stylesheet" href="./lobby.css" />
 
+<<<<<<< HEAD
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -58,6 +59,29 @@
             <button class="button is-danger is-rounded">#일정</button>
             <button class="button is-danger is-rounded">#서버</button>
             <button class="button is-danger is-rounded">#tailwind</button>
+=======
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>정글 헬퍼</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.1/css/bulma.min.css" />
+  <link rel="stylesheet" href="{{ url_for('static',filename='./css/lobby.css') }}" />
+</head>
+
+<body>
+  <div class="box">
+    <div class="box_body">
+      <div class="header">
+        <div class="header_left">
+          <div class="select is-normal">
+            <select class="select_box" id="curriSelect">
+              {% for category in categories %}
+              <option value="{{ category }}" {% if category==selected_category %} selected {% endif %}>
+                {{ category }}
+              </option>
+              {% endfor %}
+            </select>
+>>>>>>> 7ee2d3749f85d7670398d5c0ff0039c39df923be
           </div>
         </div>
         <div class="main">
@@ -184,6 +208,71 @@
           </div>
         </div>
       </div>
+<<<<<<< HEAD
     </form>
   </body>
 </html>
+=======
+      <div class="hot_topic">
+        {% for item in keywords %}
+        <button class="button is-danger is-rounded" onclick="refreshPosts('{{ item.word }}')">{{ item.word }}</button>
+        {% endfor %}
+      </div>
+      <div class="main" id="posts-container">
+        {% for item in posts %}
+        <div class="content1">
+          <a href="/post/{{ item._id }}">
+            <h1 class="title">{{ item.title }}</h1>
+          </a>
+          <a href="/post/{{ item._id }}">
+            <h2 class="subtitle">{{ item.text }}</h2>
+          </a>
+        </div>
+        {% endfor %}
+        {% include 'post_list.html' %}
+      </div>
+    </div>
+  </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+  crossorigin="anonymous"></script>
+<script>
+  const selectElement = document.getElementById("curriSelect");
+
+  selectElement.addEventListener("change", function () {
+    const selectedIndex = this.selectedIndex; // 선택된 값 가져오기
+    console.log(selectedIndex);
+    window.location.href = '/posts/' + selectedIndex;
+  });
+
+  function refreshPosts(keyword) {
+
+    $.ajax({
+      type: 'POST',
+      data: {
+        keyword: keyword,
+      },
+      url: '/get_posts',
+      success: function (response) {
+        $('#posts-container').html(response);
+      },
+      error: function (error) {
+        console.error(error);
+        alert('글 목록 가져오는 중 오류 발생');
+      }
+    });
+  }
+
+  function logout() {
+    $.ajax({
+      type: 'POST',
+      url: '/logout',
+      success: function (response) {
+        window.location.href = '/login';
+      },
+    });
+  }
+</script>
+
+</html>
+>>>>>>> 7ee2d3749f85d7670398d5c0ff0039c39df923be

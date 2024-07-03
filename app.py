@@ -33,7 +33,7 @@ def token_required(f):
             try:
                 decoded = jwt.decode(refresh_token, app.config['SECRET_KEY'], algorithms=["HS256"])
                 new_access_token = jwt.encode(
-                    {'user_id': decoded['user_id'], 'exp': datetime.datetime.utcnow() + app.config['ACCESS_TOKEN_EXPIRES']},
+                    {'user_id': decoded['user_id'], 'exp': datetime.datetime.now(datetime.UTC) + app.config['ACCESS_TOKEN_EXPIRES']},
                     app.config['SECRET_KEY'], algorithm="HS256")
                 resp = make_response(f(*args, **kwargs))
                 resp.set_cookie('access_token', new_access_token, httponly=True)
@@ -58,7 +58,7 @@ def signup():
         user_data = {'username': username, 'password': hashed_password}
         db.users.insert_one(user_data)
         return jsonify({'message': 'User created successfully'}), 201
-    return render_template('signup.html')
+    return render_template('membership.html')
 
 # 로그인 라우트
 @app.route('/login', methods=['GET', 'POST'])
@@ -68,23 +68,22 @@ def login():
         password = request.form['password']
 
         user = db.users.find_one({'username': username})
-        print(username)
-        print(list(db.users.find()))
-        if not user:    # or not check_password_hash(user['password'], password):
+
+        if not user or not check_password_hash(user['password'], password):
             return jsonify({'message': 'Invalid credentials'}), 401
 
         access_token = jwt.encode(
-            {'user_id': username, 'exp': datetime.datetime.utcnow() + app.config['ACCESS_TOKEN_EXPIRES']},
+            {'user_id': username, 'exp': datetime.datetime.now(datetime.UTC) + app.config['ACCESS_TOKEN_EXPIRES']},
             app.config['SECRET_KEY'], algorithm="HS256")
         refresh_token = jwt.encode(
-            {'user_id': username, 'exp': datetime.datetime.utcnow() + app.config['REFRESH_TOKEN_EXPIRES']},
+            {'user_id': username, 'exp': datetime.datetime.now(datetime.UTC) + app.config['REFRESH_TOKEN_EXPIRES']},
             app.config['SECRET_KEY'], algorithm="HS256")
 
-        resp = make_response(redirect(url_for('index')))
+        resp = make_response()
         resp.set_cookie('access_token', access_token, httponly=True)
         resp.set_cookie('refresh_token', refresh_token, httponly=True)
         return resp
-    return render_template('login.html')
+    return render_template('main.html')
 
 # Access Token 갱신 라우트
 @app.route('/refresh', methods=['POST'])
@@ -96,7 +95,7 @@ def refresh():
     try:
         decoded = jwt.decode(refresh_token, app.config['SECRET_KEY'], algorithms=["HS256"])
         access_token = jwt.encode(
-            {'user_id': decoded['user_id'], 'exp': datetime.datetime.utcnow() + app.config['ACCESS_TOKEN_EXPIRES']},
+            {'user_id': decoded['user_id'], 'exp': datetime.datetime.now(datetime.UTC) + app.config['ACCESS_TOKEN_EXPIRES']},
             app.config['SECRET_KEY'], algorithm="HS256")
         resp = jsonify({'access_token': access_token})
         resp.set_cookie('access_token', access_token, httponly=True)
@@ -120,7 +119,7 @@ def logout():
 def index():
     try:
         decorated_function = token_required(render_template)
-        #print('token is valid')
+
         try:       
             week_now = int((datetime.datetime.now() - datetime.datetime(2024, 6, 28, 0, 0, 0)).days / 7)
             
@@ -145,6 +144,7 @@ def index():
             print(e)
             return jsonify({'message': 'Unexpected Error'}), 400
     except Exception as e:  # token_required에서 발생하는 예외를 처리
+        print(e)
         return redirect(url_for('login'))  # 로그인 페이지로 리다이렉트
 
 # 글 목록 페이지 라우트
@@ -174,9 +174,7 @@ def posts(page):
         else:
             first_date += datetime.timedelta(weeks=18)
             last_date = first_date + datetime.timedelta(weeks=1)
-            
-        print(first_date)
-        print(last_date)
+
         curri_list = ['정글 입성', '컴퓨터 사고로의 전환', '탐험 준비', '정글 끝까지', '실력 다지기', '나만의 무기를 갖기', '세상으로 뛰어들기']
         keyword_list = sorted(list(db.keywords.find({'curri': page})), key=lambda x: x['count'], reverse=True)
         post_list = sorted(list(db.posts.find({'date': {'$gte': first_date, '$lte':last_date}})), key=lambda x: x['date'], reverse=True)
@@ -218,6 +216,16 @@ def create_post():
             
             post_data = {'title': title, 'text': content, 'author_id': decoded['user_id'], 'date' : datetime.datetime.now()}
             db.posts.insert_one(post_data)
+            
+            #키워드 count 처리
+            field = title + content
+            lowercase = field.lower()
+            target_string = lowercase.strip().replace(" ", "")
+
+            db.keywords.update_many(
+                {"$expr": {"$regexMatch": {"input": target_string, "regex": "$word", "options": "i"}}},
+                {"$inc": {"count": 1}}
+            )
 
             return jsonify({'success': True})
     except Exception as e:
@@ -241,11 +249,29 @@ def comments():
     referrer_url = request.referrer
     post_id = ObjectId(referrer_url.split('/')[-1])
     
-    print(post_id)
-    
     comments = sorted(list(db.comments.find({'post_id': post_id})), key=lambda x: x['date'], reverse=True)
-    comments.sort(key=lambda x: x['date'], reverse=True)
-    return render_template('comments.html', comments=comments)    
+    sorted_comments = sorted(comments, key=lambda x: x['likes'], reverse=True)
+    
+    return render_template('comments.html', comments=sorted_comments)    
+
+
+@app.route('/get_posts', methods=['POST'])
+@token_required
+def get_posts():
+    # 글 목록 조회
+    selected_keyword = request.form['keyword']
+    
+    query = {
+        "$or": [
+            {"title": {"$regex": selected_keyword, "$options": "i"}},
+            {"text": {"$regex": selected_keyword, "$options": "i"}}
+        ]
+    }
+    
+    posts = sorted(list(db.posts.find(query)), key=lambda x: x['date'], reverse=True)
+
+    return render_template('post_list.html', posts=posts)
+
 
 @app.route('/create_comment', methods=['POST'])
 @token_required
@@ -266,6 +292,18 @@ def create_comment():
         print(e)
         return jsonify({'success': False})
 
+
+@app.route('/like_comment', methods=['POST'])
+def like_comment():
+    try:
+        comment_id = ObjectId(request.form['_id'])
+        filter = {'_id': comment_id}
+        update = {'$inc': {'likes': 1}}
+        db.comments.update_one(filter, update)
+        
+        return jsonify({'success': True})
+    except Exception as e:
+        return jsonify({'success': False})
 
 if __name__ == '__main__':
     app.run('127.0.0.1', port=5000, debug=True)

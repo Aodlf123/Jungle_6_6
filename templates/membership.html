@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<<<<<<< HEAD
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -54,4 +55,102 @@
       </button>
     </form>
   </body>
+=======
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>회원가입</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.1/css/bulma.min.css" />
+  <link rel="stylesheet" href="{{ url_for('static',filename='./css/membership.css') }}" />
+</head>
+<body>
+  <form class="box" id="signupForm"> 
+    <div class="header">
+      <h1 class="title is-1">회원가입</h1>
+    </div>
+    <div class="field">
+      <div class="control">
+        <input class="input" id="id" type="email" placeholder="ID" />
+        <button class="button is-primary" type="button" id="checkDuplicate">중복</button>
+      </div>
+    </div>
+    <div class="field">
+      <div class="control">
+        <input class="input" id="pw" type="password" placeholder="PW" />
+      </div>
+    </div>
+    <div class="field">
+      <div class="control">
+        <input class="input" id="repw" type="password" placeholder="PW 확인" />
+      </div>
+    </div>
+    <div class="field">
+      <div class="control">
+        <input class="input" id="user" type="text" placeholder="닉네임" />
+      </div>
+    </div>
+    <button class="button is-primary tail" type="submit">가입</button>
+  </form>
+</body>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script>
+  $(document).ready(function() {
+    $('#signupForm').submit(function(event) {
+      event.preventDefault(); // 기본 폼 제출 동작 방지
+
+      const username = $('#id').val();
+      const password = $('#pw').val();
+      const passwordConfirm = $('#repw').val();
+
+      if (password !== passwordConfirm) {
+        alert('비밀번호가 일치하지 않습니다.');
+        return;
+      }
+
+      $.ajax({
+        type: 'POST',
+        url: '/signup', // 회원가입 엔드포인트
+        data: {
+          username: username,
+          password: password,
+        },
+        success: function(response) {
+          if (response.success) {
+            alert('회원가입 성공');
+            window.location.href = '/login'; // 로그인 페이지로 이동
+          } else {
+            alert('회원가입 실패: ' + response.message);
+          }
+        },
+        error: function(error) {
+          console.error(error);
+          alert('회원가입 중 오류 발생');
+        }
+      });
+    });
+
+    $('#checkDuplicate').click(function() {
+        const username = $('#id').val();
+
+        $.ajax({
+          type: 'POST',
+          url: '/check_duplicate',  
+          data: { username: username },
+          success: function(response) {
+            if (response.exists) {
+              alert('이미 사용 중인 ID입니다.');
+            } else {
+              alert('사용 가능한 ID입니다.');
+            }
+          },
+          error: function(error) {
+            console.error(error);
+            alert('중복 확인 중 오류 발생');
+          }
+        });
+      });
+  });
+</script>
+
+>>>>>>> 7ee2d3749f85d7670398d5c0ff0039c39df923be
 </html>

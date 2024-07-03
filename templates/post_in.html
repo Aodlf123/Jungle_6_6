@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<<<<<<< HEAD
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -87,3 +88,102 @@
     </form>
   </body>
 </html>
+=======
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{ title }}</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.1/css/bulma.min.css" />
+  <script src="https://kit.fontawesome.com/e0a341981e.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="{{ url_for('static',filename='./css/post_in.css') }}" />
+</head>
+
+<body>
+  <div class="box">
+    <div class="header">
+      <button class="button">
+        <a class="prev" href='/'>이전</a>
+      </button>
+    </div>
+    <h1>{{ title }}</h1>
+    <div class="question">
+      <div class="textarea q_area">{{ text }}</div>
+    </div>
+    <div class="answer" id="comments-container">
+      {% include 'comments.html' %} </div>
+    <div class="tail">
+      <form id="commentForm">
+        <input class="input post_answer" type="text" id="commentInput" placeholder="댓글" />
+        <button class="button" type="submit">등록</button>
+      </form>
+    </div>
+  </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+  crossorigin="anonymous"></script>
+<script>
+  $(document).ready(function () {
+
+    refreshComments();
+
+    $('#commentForm').submit(function (event) {
+      event.preventDefault();
+
+      const comment = $('#commentInput').val();
+
+      $.ajax({
+        type: 'POST',
+        url: '/create_comment',
+        data: { content: comment },
+        success: function (response) {
+          if (response.success) {
+            // 댓글 작성 성공 시, 댓글 목록 새로고침
+            refreshComments();
+            $('#commentInput').val(''); // 댓글 입력창 초기화
+          } else {
+            alert('댓글 작성 실패');
+          }
+        },
+        error: function (error) {
+          console.error(error);
+          alert('댓글 작성 중 오류 발생');
+        }
+      });
+    });
+  });
+
+  function refreshComments() {
+    $.ajax({
+      type: 'GET',
+      url: '/comments',
+      success: function (response) {
+        $('#comments-container').html(response);
+      },
+      error: function (error) {
+        console.error(error);
+        alert('댓글 목록 가져오는 중 오류 발생');
+      }
+    });
+  }
+
+  function like_comment(_id) {
+    $.ajax({
+      type: 'POST',
+      data: {
+        _id: _id,
+      },
+      url: '/like_comment',
+      success: function (response) {
+        refreshComments();
+      },
+      error: function (error) {
+        console.error(error);
+        alert('댓글 목록 가져오는 중 오류 발생');
+      }
+    });
+  }
+</script>
+
+</html>
+>>>>>>> 7ee2d3749f85d7670398d5c0ff0039c39df923be

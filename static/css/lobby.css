@@ -1,0 +1,147 @@
+body {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-family: "Jua", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.box {
+  width: 1300px;
+  height: 700px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  /* border: 2px solid brown; */
+  box-shadow: none;
+}
+
+.box_body {
+  width: 1100px;
+  display: flex;
+  flex-direction: column;
+}
+
+.header_fixed {
+  position: sticky;
+  width: 100%;
+  top: 0px;
+  z-index: 10;
+  background: white;
+  border: 2px solid black;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  
+}
+
+.select select {
+  border: 2px solid black;
+  font-family: "Jua", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.header_page,
+.header_logout {
+  border: 2px solid black;
+}
+
+.hot_topic {
+  width: 100%;
+}
+
+.is-danger {
+  border: 2px solid #d11801;
+  color: #d11801;
+  background: white;
+}
+
+.is-danger:hover {
+  border: 2px solid white;
+  color: white;
+  background: #d11801;
+}
+
+.title {
+  font-size: 1000;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  width: 1000px;
+  padding-left: 50px;
+  padding-top: 660px;
+}
+
+.main_left {
+  display: flex;
+  flex-direction: column;
+}
+
+.left_title,
+.left_subtitle {
+  width: 951px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 5px;
+}
+
+.subtitle {
+  color: gray;
+}
+
+.main_right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+}
+
+.weather {
+  border: 1px solid black;
+  width: 300px;
+  height: 300px;
+  border-radius: 15px;
+}
+
+.post {
+  border-bottom: solid 1px lightgray;
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+}
+
+.posted {
+  border: 2px solid black;
+  box-shadow: none;
+}
+
+.fixed_tail {
+  position: fixed;
+  width: 1100px;
+  top: 600px;
+}
+
+.tail {
+  position: absolute;
+  left: 47%;
+  top: 50%;
+}
+
+.post_made,
+.my_page,
+.logout {
+  color: black;
+}
