@@ -8,56 +8,35 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@1.0.1/css/bulma.min.css"
     />
-    <link rel="stylesheet" href="./my_page.css" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Jua&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="stylesheet" href="{{ url_for('static',filename='./css/my_page.css') }}" />
   </head>
   <body>
     <div class="box">
       <div class="header">
         <button class="button">
-          <a class="prev" href="./lobby.html">이전</a>
+          <a class="prev" href='/'>이전</a>
         </button>
       </div>
       <h1 class="title is-1">내 게시글</h1>
       <div class="main">
-        <div class="my_post">
-          <a href="./post_in.html"
-            ><h1 class="main_title title is-4">제목</h1></a
-          >
-          <a href="./post_in.html"
-            ><h2 class="main_subtitle subtitle">내용</h2></a
-          >
+        {% for item in posts %}
+        <div class="content1">
+          <a href="/post/{{ item._id }}">
+            <h1 class="title">{{ item.title }}</h1>
+          </a>
+          <a href="/post/{{ item._id }}">
+            <h2 class="subtitle">{{ item.text }}</h2>
+          </a>
         </div>
-        <div class="my_post">
-          <a href="./post_in.html"><h1 class="title is-4">제목</h1></a>
-          <a href="./post_in.html"><h2 class="subtitle">내용</h2></a>
-        </div>
-        <div class="my_post">
-          <a href="./post_in.html"><h1 class="title is-4">제목</h1></a>
-          <a href="./post_in.html"><h2 class="subtitle">내용</h2></a>
-        </div>
-        <div class="my_post">
-          <a href="./post_in.html"><h1 class="title is-4">제목</h1></a>
-          <a href="./post_in.html"><h2 class="subtitle">내용</h2></a>
-        </div>
-        <div class="my_post">
-          <a href="./post_in.html"><h1 class="title is-4">제목</h1></a>
-          <a href="./post_in.html"><h2 class="subtitle">내용</h2></a>
-        </div>
+        {% endfor %}
       </div>
-<<<<<<< HEAD
-      <button class="button tail">
-        <a class="logout" href="./main.html">로그아웃</a>
-      </button>
-    </form>
-=======
     </div>
->>>>>>> 7ee2d3749f85d7670398d5c0ff0039c39df923be
   </body>
+  <style>
+    .content1 {
+  border-bottom: solid 1px lightgray;
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+}
+  </style>
 </html>
