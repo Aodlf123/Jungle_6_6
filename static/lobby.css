@@ -39,7 +39,7 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-bottom: 20px;
+  
 }
 
 .select select {
@@ -70,13 +70,17 @@ body {
   background: #d11801;
 }
 
+.title {
+  font-size: 1000;
+}
+
 .main {
   display: flex;
   flex-direction: column;
   height: auto;
   width: 1000px;
   padding-left: 50px;
-  padding-top: 620px;
+  padding-top: 660px;
 }
 
 .main_left {
@@ -92,6 +96,10 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
   padding: 5px;
+}
+
+.subtitle {
+  color: gray;
 }
 
 .main_right {
@@ -120,13 +128,16 @@ body {
   box-shadow: none;
 }
 
-.tail {
+.fixed_tail {
   position: fixed;
+  width: 1100px;
   top: 600px;
-  left: 700px;
+}
 
-  height: 40px;
-  margin-top: 20px;
+.tail {
+  position: absolute;
+  left: 47%;
+  top: 50%;
 }
 
 .post_made,
