@@ -1,77 +1,189 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>정글 헬퍼</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@1.0.1/css/bulma.min.css"
+    />
+    <link rel="stylesheet" href="./lobby.css" />
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>정글 헬퍼</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.1/css/bulma.min.css" />
-  <link rel="stylesheet" href="{{ url_for('static',filename='./css/lobby.css') }}" />
-</head>
-
-<body>
-  <form class="box">
-    <div class="box_body">
-      <div class="header">
-        <div class="header_left">
-          <div class="select is-normal">
-            <select class="select_box" id="curriSelect">
-              {% for category in categories %}
-              <option value="{{ category }}" {% if category==selected_category %} selected {% endif %}>
-                {{ category }}
-              </option>
-              {% endfor %}
-            </select>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jua&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <form class="box">
+      <div class="box_body">
+        <div class="header_fixed">
+          <div class="header">
+            <div class="header_left">
+              <div class="select">
+                <select class="select_box">
+                  <option>정글 입성</option>
+                  <option>컴퓨터 사고로의 전환</option>
+                  <option>탐험 준비</option>
+                  <option>정글 끝까지</option>
+                  <option>살력 다지기</option>
+                  <option>나만의 무기를 갖기</option>
+                  <option>세상으로 뛰어들기</option>
+                </select>
+              </div>
+            </div>
+            <h1 class="title is-1" style="font-size: 60px; font-weight: 400">
+              정글 헬퍼
+            </h1>
+            <div class="header_right">
+              <button class="button header_page">
+                <a class="my_page" href="./my_page.html">내 게시글</a>
+              </button>
+              <button class="button header_logout">
+                <a class="logout" href="./main.html">로그아웃</a>
+              </button>
+            </div>
+          </div>
+          <div class="hot_topic">
+            <button class="button is-danger is-rounded">#ssr</button>
+            <button class="button is-danger is-rounded">#db</button>
+            <button class="button is-danger is-rounded">#정글</button>
+            <button class="button is-danger is-rounded">#프론트</button>
+            <button class="button is-danger is-rounded">#백</button>
+            <button class="button is-danger is-rounded">#JWT</button>
+            <button class="button is-danger is-rounded">#프로젝트</button>
+            <button class="button is-danger is-rounded">#일정</button>
+            <button class="button is-danger is-rounded">#서버</button>
+            <button class="button is-danger is-rounded">#tailwind</button>
           </div>
         </div>
-        <div class="header_right">
-          <button class="button post">
-            <a class="post_made" href="/create_post">작성하기</a>
-          </button>
-          <button class="button">
-            <a class="my_page" href="/mypage">내 게시글</a>
-          </button>
-          <button class="button">
-            <a class="logout" Onclick="logout()">로그아웃</a>
-          </button>
+        <div class="main">
+          <div class="main_left">
+            <div class="post">
+              <a href="./post_in.html"
+                ><h1 class="title left_title is-4">제목</h1></a
+              >
+              <a href="./post_in.html"
+                ><h2 class="subtitle left_subtitle">내용</h2></a
+              >
+            </div>
+            <div class="post">
+              <a href="./post_in.html"
+                ><h1 class="title left_title is-4">제목</h1></a
+              >
+              <a href="./post_in.html"
+                ><h2 class="subtitle left_subtitle">내용</h2></a
+              >
+            </div>
+            <div class="post">
+              <a href="./post_in.html"
+                ><h1 class="title left_title is-4">제목</h1></a
+              >
+              <a href="./post_in.html"
+                ><h2 class="subtitle left_subtitle">내용</h2></a
+              >
+            </div>
+            <div class="post">
+              <a href="./post_in.html"
+                ><h1 class="title left_title is-4">제목</h1></a
+              >
+              <a href="./post_in.html"
+                ><h2 class="subtitle left_subtitle">내용</h2></a
+              >
+            </div>
+            <div class="post">
+              <a href="./post_in.html"
+                ><h1 class="title left_title is-4">제목</h1></a
+              >
+              <a href="./post_in.html"
+                ><h2 class="subtitle left_subtitle">내용</h2></a
+              >
+            </div>
+            <div class="post">
+              <a href="./post_in.html"
+                ><h1 class="title left_title is-4">제목</h1></a
+              >
+              <a href="./post_in.html"
+                ><h2 class="subtitle left_subtitle">내용</h2></a
+              >
+            </div>
+            <div class="post">
+              <a href="./post_in.html"
+                ><h1 class="title left_title is-4">제목</h1></a
+              >
+              <a href="./post_in.html"
+                ><h2 class="subtitle left_subtitle">내용</h2></a
+              >
+            </div>
+            <div class="post">
+              <a href="./post_in.html"
+                ><h1 class="title left_title is-4">제목</h1></a
+              >
+              <a href="./post_in.html"
+                ><h2 class="subtitle left_subtitle">내용</h2></a
+              >
+            </div>
+            <div class="post">
+              <a href="./post_in.html"
+                ><h1 class="title left_title is-4">제목</h1></a
+              >
+              <a href="./post_in.html"
+                ><h2 class="subtitle left_subtitle">내용</h2></a
+              >
+            </div>
+            <div class="post">
+              <a href="./post_in.html"
+                ><h1 class="title left_title is-4">제목</h1></a
+              >
+              <a href="./post_in.html"
+                ><h2 class="subtitle left_subtitle">내용</h2></a
+              >
+            </div>
+            <div class="post">
+              <a href="./post_in.html"
+                ><h1 class="title left_title is-4">제목</h1></a
+              >
+              <a href="./post_in.html"
+                ><h2 class="subtitle left_subtitle">내용</h2></a
+              >
+            </div>
+            <div class="post">
+              <a href="./post_in.html"
+                ><h1 class="title left_title is-4">제목</h1></a
+              >
+              <a href="./post_in.html"
+                ><h2 class="subtitle left_subtitle">내용</h2></a
+              >
+            </div>
+            <div class="post">
+              <a href="./post_in.html"
+                ><h1 class="title left_title is-4">제목</h1></a
+              >
+              <a href="./post_in.html"
+                ><h2 class="subtitle left_subtitle">내용</h2></a
+              >
+            </div>
+            <div class="post">
+              <a href="./post_in.html"
+                ><h1 class="title left_title is-4">제목</h1></a
+              >
+              <a href="./post_in.html"
+                ><h2 class="subtitle left_subtitle">내용</h2></a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="fixed_tail">
+          <div class="tail">
+            <button class="button posted">
+              <a class="post_made" href="./post_made.html">작성하기</a>
+            </button>
+          </div>
         </div>
       </div>
-      <div class="hot_topic">
-        {% for item in keywords %}
-        <button class="button is-danger is-rounded">{{ item.word }}</button>
-        {% endfor %}
-      </div>
-      <div class="main">
-        {% for item in posts %}
-        <div class="content1">
-          <a href="/post/{{ item._id }}">
-            <h1 class="title">{{ item.title }}</h1>
-          </a>
-          <a href="/post/{{ item._id }}">
-            <h2 class="subtitle">{{ item.text }}</h2>
-          </a>
-        </div>
-        {% endfor %}
-      </div>
-    </div>
-  </form>
-</body>
-<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-<script>
-  const selectElement = document.getElementById("curriSelect");
-
-  selectElement.addEventListener("change", function () {
-    const selectedIndex = this.selectedIndex; // 선택된 값 가져오기
-    console.log(selectedIndex);
-    window.location.href = '/posts/' + selectedIndex;
-  });
-
-  function logout() {
-    $.ajax({
-      type: 'POST',
-      url: '/logout',
-    });
-  }
-</script>
-
+    </form>
+  </body>
 </html>
