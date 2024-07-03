@@ -1,12 +1,11 @@
-@media screen and (max-width: 600px) {
-  
-}
-
 body {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  font-family: "Jua", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .box {
@@ -26,6 +25,16 @@ body {
   flex-direction: column;
 }
 
+.header_fixed {
+  position: sticky;
+  width: 100%;
+  top: 0px;
+  z-index: 10;
+  background: white;
+  border: 2px solid black;
+  padding: 20px;
+}
+
 .header {
   display: flex;
   flex-direction: row;
@@ -35,7 +44,6 @@ body {
 
 .hot_topic {
   width: 100%;
-  margin-bottom: 20px;
 }
 
 .is-danger {
@@ -52,22 +60,25 @@ body {
 
 .main {
   display: flex;
-  flex-direction: row;
-  height: 400px;
+  flex-direction: column;
+  height: auto;
+  width:1000px;
+  padding-left: 50px;
+  padding-top: 620px;
 }
 
 .main_left {
   display: flex;
   flex-direction: column;
-  width: 700px;
 }
 
 .left_title, .left_subtitle {
-  width: 700px;
+  width: 951px;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  padding: 5px;
 }
 
 .main_right {
@@ -85,23 +96,23 @@ body {
   border-radius: 15px;
 }
 
-.post {
+.post { 
   border-bottom: solid 1px lightgray;
   margin-bottom: 5px;
   padding-bottom: 5px;
 }
 
-.tail {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  height: 40px;
-  margin-top: 20px;
+.posted {
+  border: 2px solid black;
+  box-shadow: none;
 }
 
-.left_tail {
-  position: relative;
-  left: 490px;
+.tail {
+  position: fixed;
+  top: 600px;
+  left: 700px;
+  height: 40px;
+  margin-top: 20px;
 }
 
 .post_made, .my_page, .logout {

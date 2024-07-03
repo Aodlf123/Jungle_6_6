@@ -3,6 +3,9 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  font-family: "Jua", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .box {
@@ -12,11 +15,12 @@ body {
   align-items: center;
   /* border: 2px solid brown; */
   box-shadow: none;
-  background: lightgreen
+  background: lightgreen;
 }
 
 .main {
   padding: 20px;
+  border: 2px solid black;
   border-radius: 8px;
   background: white;
 }
@@ -77,10 +81,10 @@ body {
 
 .a_sub {
   position: relative;
-  left : 30px;
+  left: 30px;
   width: 470px;
   border-radius: 8px;
-  background: #e5e5e5
+  background: #e5e5e5;
 }
 
 .a_option {
