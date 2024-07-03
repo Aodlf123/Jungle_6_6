@@ -42,9 +42,20 @@ body {
   margin-bottom: 20px;
 }
 
+.select select {
+  border: 2px solid black;
+  font-family: "Jua", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.header_page,
+.header_logout {
+  border: 2px solid black;
+}
+
 .hot_topic {
   width: 100%;
-
 }
 
 .is-danger {
@@ -57,14 +68,13 @@ body {
   border: 2px solid white;
   color: white;
   background: #d11801;
-
 }
 
 .main {
   display: flex;
   flex-direction: column;
   height: auto;
-  width:1000px;
+  width: 1000px;
   padding-left: 50px;
   padding-top: 620px;
 }
@@ -74,7 +84,8 @@ body {
   flex-direction: column;
 }
 
-.left_title, .left_subtitle {
+.left_title,
+.left_subtitle {
   width: 951px;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -98,7 +109,7 @@ body {
   border-radius: 15px;
 }
 
-.post { 
+.post {
   border-bottom: solid 1px lightgray;
   margin-bottom: 5px;
   padding-bottom: 5px;
@@ -118,6 +129,8 @@ body {
   margin-top: 20px;
 }
 
-.post_made, .my_page, .logout {
+.post_made,
+.my_page,
+.logout {
   color: black;
 }
