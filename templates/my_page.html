@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>게시글 작성</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@1.0.1/css/bulma.min.css"
+    />
+    <link rel="stylesheet" href="{{ url_for('static',filename='./css/my_page.css') }}" />
+  </head>
+  <body>
+    <form class="box">
+      <div class="header">
+        <button class="button">
+          <a class="prev" href='/'>이전</a>
+        </button>
+      </div>
+      <h1 class="title is-1">내 게시글</h1>
+      <div class="main">
+        {% for item in posts %}
+        <div class="content1">
+          <a href="/post/{{ item._id }}">
+            <h1 class="title">{{ item.title }}</h1>
+          </a>
+          <a href="/post/{{ item._id }}">
+            <h2 class="subtitle">{{ item.text }}</h2>
+          </a>
+        </div>
+        {% endfor %}
+      </div>
+    </form>
+  </body>
+  <style>
+    .content1 {
+  border-bottom: solid 1px lightgray;
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+}
+  </style>
+</html>

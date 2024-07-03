@@ -1,0 +1,11 @@
+{% for comment in comments %}
+<div class="a_area">
+  <div class="a_main">
+    <div class="a_detail">{{ comment.content }}</div>
+    <div class="a_option">
+      <div class="comment"><i class="fa-solid fa-comment"></i></div>
+      <div class="like"><i class="fa-solid fa-thumbs-up"></i></div>
+    </div>
+  </div>
+</div>
+{% endfor %}

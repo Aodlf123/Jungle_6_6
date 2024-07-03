@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>정글 헬퍼</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.1/css/bulma.min.css" />
+  <link rel="stylesheet" href="{{ url_for('static',filename='./css/lobby.css') }}" />
+</head>
+
+<body>
+  <form class="box">
+    <div class="box_body">
+      <div class="header">
+        <div class="header_left">
+          <div class="select is-normal">
+            <select class="select_box" id="curriSelect">
+              {% for category in categories %}
+              <option value="{{ category }}" {% if category==selected_category %} selected {% endif %}>
+                {{ category }}
+              </option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+        <div class="header_right">
+          <button class="button post">
+            <a class="post_made" href="/create_post">작성하기</a>
+          </button>
+          <button class="button">
+            <a class="my_page" href="/mypage">내 게시글</a>
+          </button>
+          <button class="button">
+            <a class="logout" Onclick="logout()">로그아웃</a>
+          </button>
+        </div>
+      </div>
+      <div class="hot_topic">
+        {% for item in keywords %}
+        <button class="button is-danger is-rounded">{{ item.word }}</button>
+        {% endfor %}
+      </div>
+      <div class="main">
+        {% for item in posts %}
+        <div class="content1">
+          <a href="/post/{{ item._id }}">
+            <h1 class="title">{{ item.title }}</h1>
+          </a>
+          <a href="/post/{{ item._id }}">
+            <h2 class="subtitle">{{ item.text }}</h2>
+          </a>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </form>
+</body>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script>
+  const selectElement = document.getElementById("curriSelect");
+
+  selectElement.addEventListener("change", function () {
+    const selectedIndex = this.selectedIndex; // 선택된 값 가져오기
+    console.log(selectedIndex);
+    window.location.href = '/posts/' + selectedIndex;
+  });
+
+  function logout() {
+    $.ajax({
+      type: 'POST',
+      url: '/logout',
+    });
+  }
+</script>
+
+</html>
