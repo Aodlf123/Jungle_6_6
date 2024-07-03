@@ -3,9 +3,12 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+<<<<<<< HEAD
   font-family: "Jua", sans-serif;
   font-weight: 400;
   font-style: normal;
+=======
+>>>>>>> f428aaee4c3fbfb23764a6c6f4559233327f4f11
 }
 
 .box {
@@ -13,6 +16,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+<<<<<<< HEAD
   /* border: 2px solid brown; */
   box-shadow: none;
   background: lightgreen;
@@ -23,6 +27,9 @@ body {
   border: 2px solid black;
   border-radius: 8px;
   background: white;
+=======
+  border: 2px solid brown;
+>>>>>>> f428aaee4c3fbfb23764a6c6f4559233327f4f11
 }
 
 .header {
@@ -33,12 +40,15 @@ body {
   margin-bottom: 20px;
 }
 
+<<<<<<< HEAD
 .pin {
   position: relative;
   width: 10%;
   right: 155px;
 }
 
+=======
+>>>>>>> f428aaee4c3fbfb23764a6c6f4559233327f4f11
 .prev {
   color: black;
 }
@@ -48,12 +58,17 @@ body {
 }
 
 .q_area {
+<<<<<<< HEAD
   word-break: break-all;
   width: 500px;
   height: 300px;
   border: 1px solid lightgray;
   border-radius: 5px;
   overflow-y: auto;
+=======
+  width: 500px;
+  height: 300px;
+>>>>>>> f428aaee4c3fbfb23764a6c6f4559233327f4f11
 }
 
 .answer {
@@ -79,6 +94,7 @@ body {
   align-items: center;
 }
 
+<<<<<<< HEAD
 .a_sub {
   position: relative;
   left: 30px;
@@ -87,6 +103,8 @@ body {
   background: #e5e5e5;
 }
 
+=======
+>>>>>>> f428aaee4c3fbfb23764a6c6f4559233327f4f11
 .a_option {
   display: flex;
   flex-direction: row;
@@ -97,6 +115,7 @@ body {
 .delete {
   margin-left: 10px;
 }
+<<<<<<< HEAD
 .a_main_detail {
   /* border: 1px solid black; */
   width: 470px;
@@ -107,6 +126,12 @@ body {
   /* border: 1px solid black; */
   width: 430px;
   word-break: break-all;
+=======
+
+.a_sub_detail {
+  position: relative;
+  left: 30px;
+>>>>>>> f428aaee4c3fbfb23764a6c6f4559233327f4f11
 }
 
 .post_answer {

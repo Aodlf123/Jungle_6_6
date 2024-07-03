@@ -3,9 +3,12 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+<<<<<<< HEAD
   font-family: "Jua", sans-serif;
   font-weight: 400;
   font-style: normal;
+=======
+>>>>>>> f428aaee4c3fbfb23764a6c6f4559233327f4f11
 }
 
 .box {
@@ -15,8 +18,12 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+<<<<<<< HEAD
   /* border: 2px solid brown; */
   box-shadow: none;
+=======
+  border: 2px solid brown;
+>>>>>>> f428aaee4c3fbfb23764a6c6f4559233327f4f11
 }
 
 .box_body {
@@ -25,6 +32,7 @@ body {
   flex-direction: column;
 }
 
+<<<<<<< HEAD
 .header_fixed {
   position: sticky;
   width: 100%;
@@ -35,6 +43,8 @@ body {
   padding: 20px;
 }
 
+=======
+>>>>>>> f428aaee4c3fbfb23764a6c6f4559233327f4f11
 .header {
   display: flex;
   flex-direction: row;
@@ -44,6 +54,7 @@ body {
 
 .hot_topic {
   width: 100%;
+<<<<<<< HEAD
 }
 
 .is-danger {
@@ -56,11 +67,15 @@ body {
   border: 2px solid white;
   color: white;
   background: #d11801;
+=======
+  margin-bottom: 20px;
+>>>>>>> f428aaee4c3fbfb23764a6c6f4559233327f4f11
 }
 
 .main {
   display: flex;
   flex-direction: column;
+<<<<<<< HEAD
   height: auto;
   width:1000px;
   padding-left: 50px;
@@ -97,11 +112,17 @@ body {
 }
 
 .post { 
+=======
+}
+
+.content1 {
+>>>>>>> f428aaee4c3fbfb23764a6c6f4559233327f4f11
   border-bottom: solid 1px lightgray;
   margin-bottom: 5px;
   padding-bottom: 5px;
 }
 
+<<<<<<< HEAD
 .posted {
   border: 2px solid black;
   box-shadow: none;
@@ -111,10 +132,24 @@ body {
   position: fixed;
   top: 600px;
   left: 700px;
+=======
+.tail {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+>>>>>>> f428aaee4c3fbfb23764a6c6f4559233327f4f11
   height: 40px;
   margin-top: 20px;
 }
 
+<<<<<<< HEAD
+=======
+.left_tail {
+  position: relative;
+  left: 490px;
+}
+
+>>>>>>> f428aaee4c3fbfb23764a6c6f4559233327f4f11
 .post_made, .my_page, .logout {
   color: black;
 }

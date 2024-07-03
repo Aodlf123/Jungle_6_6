@@ -3,6 +3,7 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+<<<<<<< HEAD
   font-family: "Jua", sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -10,16 +11,26 @@ body {
 
 .box {
   width: 500px;
+=======
+}
+
+.box {
+  width: 600px;
+>>>>>>> f428aaee4c3fbfb23764a6c6f4559233327f4f11
   height: 700px;
   display: flex;
   flex-direction: column;
   align-items: center;
+<<<<<<< HEAD
   border: 2px solid black;
   box-shadow: none;
   background-image: url(./img/grass.jpg);
   background-size: contain ;
   background-repeat: no-repeat;
   background-position: 0px 366px ;
+=======
+  border: 2px solid brown;
+>>>>>>> f428aaee4c3fbfb23764a6c6f4559233327f4f11
 }
 
 .prev {
@@ -30,6 +41,7 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: right;
+<<<<<<< HEAD
   width: 450px;
   margin-bottom: 20px;
 }
@@ -41,11 +53,22 @@ body {
 
 .main {
   width: 450px;
+=======
+  width: 500px;
+  margin-bottom: 20px;
+}
+
+.main {
+  width: 500px;
+>>>>>>> f428aaee4c3fbfb23764a6c6f4559233327f4f11
 }
 
 .post_title,
 .post_detail {
+<<<<<<< HEAD
   margin-top: 10px;
+=======
+>>>>>>> f428aaee4c3fbfb23764a6c6f4559233327f4f11
   margin-bottom: 20px;
 }
 

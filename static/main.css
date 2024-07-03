@@ -3,9 +3,12 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+<<<<<<< HEAD
   font-family: "Jua", sans-serif;
   font-weight: 400;
   font-style: normal;
+=======
+>>>>>>> f428aaee4c3fbfb23764a6c6f4559233327f4f11
 }
 
 .field {
@@ -22,6 +25,7 @@ body {
 }
 
 .box {
+<<<<<<< HEAD
   box-shadow: none;
   display: flex;
   flex-direction: row;
@@ -105,11 +109,16 @@ body {
 }
 
 .right_box {
+=======
+>>>>>>> f428aaee4c3fbfb23764a6c6f4559233327f4f11
   background-image: url(./img/junglefinder.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: -50px;
+<<<<<<< HEAD
   border-radius: 8px;
+=======
+>>>>>>> f428aaee4c3fbfb23764a6c6f4559233327f4f11
   width: 600px;
   height: 700px;
   display: flex;
