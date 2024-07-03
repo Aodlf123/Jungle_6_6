@@ -1,0 +1,61 @@
+body {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.box {
+  background-image: url(./img/grass.jpg);
+  background-size: contain ;
+  background-repeat: no-repeat;
+  background-position: 0px 366px ;
+  border: 2px solid black;
+  /* box-shadow: none; */
+  width: 500px;
+  height: 700px;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.title {
+  margin-top: 60px;
+  margin-bottom: 80px;
+}
+
+.input {
+  border: 2px solid black;
+}
+
+.is-6 {
+  color: red;
+}
+
+.hidden {
+  display: none;
+}
+
+.button {
+  border: 2px solid black;
+  background: lightgray;
+  height: 40px;
+}
+
+#id {
+  width: 228px;
+}
+
+.field {
+  width: 300px;
+}
+
+#login {
+  color: black;
+}
+
+.tail {
+  margin-top: 20px;
+  background: white;
+}

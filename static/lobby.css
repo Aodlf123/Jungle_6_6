@@ -1,0 +1,109 @@
+@media screen and (max-width: 600px) {
+  
+}
+
+body {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.box {
+  width: 1300px;
+  height: 700px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  /* border: 2px solid brown; */
+  box-shadow: none;
+}
+
+.box_body {
+  width: 1100px;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.hot_topic {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.is-danger {
+  border: 2px solid #d11801;
+  color: #d11801;
+  background: white;
+}
+
+.is-danger:hover {
+  border: 2px solid white;
+  color: white;
+  background: #d11801;
+}
+
+.main {
+  display: flex;
+  flex-direction: row;
+  height: 400px;
+}
+
+.main_left {
+  display: flex;
+  flex-direction: column;
+  width: 700px;
+}
+
+.left_title, .left_subtitle {
+  width: 700px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.main_right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+}
+
+.weather {
+  border: 1px solid black;
+  width: 300px;
+  height: 300px;
+  border-radius: 15px;
+}
+
+.post {
+  border-bottom: solid 1px lightgray;
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+}
+
+.tail {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 40px;
+  margin-top: 20px;
+}
+
+.left_tail {
+  position: relative;
+  left: 490px;
+}
+
+.post_made, .my_page, .logout {
+  color: black;
+}
