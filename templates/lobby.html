@@ -10,7 +10,7 @@
 </head>
 
 <body>
-  <form class="box">
+  <div class="box">
     <div class="box_body">
       <div class="header">
         <div class="header_left">
@@ -38,10 +38,10 @@
       </div>
       <div class="hot_topic">
         {% for item in keywords %}
-        <button class="button is-danger is-rounded">{{ item.word }}</button>
+        <button class="button is-danger is-rounded" onclick="refreshPosts('{{ item.word }}')">{{ item.word }}</button>
         {% endfor %}
       </div>
-      <div class="main">
+      <div class="main" id="posts-container">
         {% for item in posts %}
         <div class="content1">
           <a href="/post/{{ item._id }}">
@@ -52,11 +52,13 @@
           </a>
         </div>
         {% endfor %}
+        {% include 'post_list.html' %}
       </div>
     </div>
-  </form>
+  </div>
 </body>
-<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+  crossorigin="anonymous"></script>
 <script>
   const selectElement = document.getElementById("curriSelect");
 
@@ -66,10 +68,31 @@
     window.location.href = '/posts/' + selectedIndex;
   });
 
+  function refreshPosts(keyword) {
+
+    $.ajax({
+      type: 'POST',
+      data: {
+        keyword: keyword,
+      },
+      url: '/get_posts',
+      success: function (response) {
+        $('#posts-container').html(response);
+      },
+      error: function (error) {
+        console.error(error);
+        alert('글 목록 가져오는 중 오류 발생');
+      }
+    });
+  }
+
   function logout() {
     $.ajax({
       type: 'POST',
       url: '/logout',
+      success: function (response) {
+        window.location.href = '/login';
+      },
     });
   }
 </script>

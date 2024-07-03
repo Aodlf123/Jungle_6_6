@@ -62,21 +62,38 @@
         }
       });
     });
-
-    function refreshComments() {
-      $.ajax({
-        type: 'GET',
-        url: '/comments',
-        success: function (response) {
-          $('#comments-container').html(response);
-        },
-        error: function (error) {
-          console.error(error);
-          alert('댓글 목록 가져오는 중 오류 발생');
-        }
-      });
-    }
   });
+
+  function refreshComments() {
+    $.ajax({
+      type: 'GET',
+      url: '/comments',
+      success: function (response) {
+        $('#comments-container').html(response);
+      },
+      error: function (error) {
+        console.error(error);
+        alert('댓글 목록 가져오는 중 오류 발생');
+      }
+    });
+  }
+
+  function like_comment(_id) {
+    $.ajax({
+      type: 'POST',
+      data: {
+        _id: _id,
+      },
+      url: '/like_comment',
+      success: function (response) {
+        refreshComments();
+      },
+      error: function (error) {
+        console.error(error);
+        alert('댓글 목록 가져오는 중 오류 발생');
+      }
+    });
+  }
 </script>
 
 </html>

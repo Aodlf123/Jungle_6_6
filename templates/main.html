@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>로그인</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.1/css/bulma.min.css" />
+  <link rel="stylesheet" href="{{ url_for('static',filename='./css/main.css') }}" />
+</head>
+
+<body>
+  <form class="box" id="loginForm">
+    <div class="header">
+      <h1 class="title is-1">정글 헬퍼</h1>
+    </div>
+    <div class="field">
+      <div class="control">
+        <input class="input" id="username" type="email" placeholder="ID" />
+      </div>
+    </div>
+    <div class="field">
+      <div class="control">
+        <input class="input" id="password" type="password" placeholder="PW" />
+      </div>
+    </div>
+    <button class="button is-primary login" type="submit">로그인</button>
+    <button class="button is-primary membership">
+      <a class="a2" href="/signup">회원가입</a>
+    </button>
+  </form>
+</body>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+  crossorigin="anonymous"></script>
+<script>
+  $(document).ready(function () {
+    $('#loginForm').submit(function (event) {
+      event.preventDefault(); // 기본 폼 제출 동작 방지
+
+      const username = $('#username').val();
+      const password = $('#password').val();
+
+      $.ajax({
+        type: 'POST',
+        url: '/login', // 로그인 라우트 URL
+        data: {
+          username: username,
+          password: password
+        },
+        success: function (response) {
+
+          window.location.href = '/';
+        },
+        error: function (error) {
+          // 로그인 실패 시 처리
+          console.error(error);
+          alert('로그인 중 오류 발생');
+        }
+      });
+    });
+  });
+
+</script>
+
+</html>
