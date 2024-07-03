@@ -1,10 +1,10 @@
 {% for item in posts %}
-<div class="content1">
+<div class="post">
     <a href="/post/{{ item._id }}">
-        <h1 class="title">{{ item.title }}</h1>
+        <h1 class="title left_title is-4">{{ item.title }}</h1>
     </a>
     <a href="/post/{{ item._id }}">
-        <h2 class="subtitle">{{ item.text }}</h2>
+        <h2 class="subtitle left_subtitle">{{ item.text }}</h2>
     </a>
 </div>
 {% endfor %}

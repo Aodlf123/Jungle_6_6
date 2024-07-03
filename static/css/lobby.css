@@ -14,7 +14,7 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
   /* border: 2px solid brown; */
   box-shadow: none;
 }
@@ -80,7 +80,7 @@ body {
   height: auto;
   width: 1000px;
   padding-left: 50px;
-  padding-top: 660px;
+  /* padding-top: 470px; */
 }
 
 .main_left {

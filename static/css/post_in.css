@@ -15,8 +15,9 @@ body {
   flex-direction: column;
   align-items: center;
   /* border: 2px solid brown; */
-  box-shadow: none;
-  background-image: url(./img/background.jpg);
+  /* box-shadow: none; */
+  /* background-image: url(../img/background.jpg); */
+  background: whitesmoke;
   background-size: cover;
 }
 
@@ -112,7 +113,18 @@ body {
 }
 
 .post_answer {
-  width: 500px;
+  width: 430px;
   height: 30px;
   margin-top: 20px;
+}
+
+.submit_button {
+  height: 30px;
+}
+
+#commentForm {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }

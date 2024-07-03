@@ -9,7 +9,7 @@ body {
 }
 
 .box {
-  background-image: url(./img/grass.jpg);
+  background-image: url(../img/grass.jpg);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: 0px 366px;

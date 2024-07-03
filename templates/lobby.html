@@ -7,14 +7,22 @@
   <title>정글 헬퍼</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.1/css/bulma.min.css" />
   <link rel="stylesheet" href="{{ url_for('static',filename='./css/lobby.css') }}" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Jua&display=swap"
+    rel="stylesheet"
+  />
 </head>
+
 
 <body>
   <div class="box">
     <div class="box_body">
+      <div class="header_fixed">
       <div class="header">
         <div class="header_left">
-          <div class="select is-normal">
+          <div class="select">
             <select class="select_box" id="curriSelect">
               {% for category in categories %}
               <option value="{{ category }}" {% if category==selected_category %} selected {% endif %}>
@@ -24,14 +32,14 @@
             </select>
           </div>
         </div>
+        <h1 class="title is-1" style="font-size: 60px; font-weight: 400">
+          정글 헬퍼
+        </h1>
         <div class="header_right">
-          <button class="button post">
-            <a class="post_made" href="/create_post">작성하기</a>
-          </button>
-          <button class="button">
+          <button class="button header_page">
             <a class="my_page" href="/mypage">내 게시글</a>
           </button>
-          <button class="button">
+          <button class="button header_logout">
             <a class="logout" Onclick="logout()">로그아웃</a>
           </button>
         </div>
@@ -41,22 +49,27 @@
         <button class="button is-danger is-rounded" onclick="refreshPosts('{{ item.word }}')">{{ item.word }}</button>
         {% endfor %}
       </div>
+    </div>
       <div class="main" id="posts-container">
-        {% for item in posts %}
-        <div class="content1">
-          <a href="/post/{{ item._id }}">
-            <h1 class="title">{{ item.title }}</h1>
-          </a>
-          <a href="/post/{{ item._id }}">
-            <h2 class="subtitle">{{ item.text }}</h2>
-          </a>
-        </div>
-        {% endfor %}
         {% include 'post_list.html' %}
       </div>
+      <div class="fixed_tail">
+        <div class="tail">
+          <button class="button posted">
+            <a class="post_made" href="/create_post">작성하기</a>
+          </button>
+        </div>
+      </div>
+
     </div>
   </div>
 </body>
+
+
+
+
+
+
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
   crossorigin="anonymous"></script>
 <script>
@@ -67,6 +80,12 @@
     console.log(selectedIndex);
     window.location.href = '/posts/' + selectedIndex;
   });
+
+
+
+
+
+
 
   function refreshPosts(keyword) {
 

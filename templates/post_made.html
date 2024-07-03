@@ -1,54 +1,82 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>게시글 작성</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.1/css/bulma.min.css" />
-  <link rel="stylesheet" href="{{ url_for('static',filename='./css/post_made.css') }}" />
-</head>
-<body>
-  <form class="box" id="postForm">
-    <div class="header">
-      <button class="button">
-        <a class="prev" href='/'>이전</a>
-      </button>
-    </div>
-    <div class="main">
-      <input class="input is-primary post_title" type="text" id="postTitle" placeholder="제목" />
-      <textarea class="textarea post_detail" id="postContent" placeholder="내용" rows="10"></textarea>
-    </div>
-    <button class="button" type="submit">작성</button>
-  </form>
-</body>
-<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-<script>
-  $(document).ready(function() {
-    $('#postForm').submit(function(event) {
-      event.preventDefault(); // 기본 폼 제출 동작 방지
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>게시글 작성</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@1.0.1/css/bulma.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static',filename='./css/post_made.css') }}"
+    />
+    <link rel="stylesheet" href="./post_made.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jua&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <form class="box" id="postForm">
+      <div class="header">
+        <button class="button">
+          <a class="prev" href="/">이전</a>
+        </button>
+      </div>
+      <h1 class="title is-1">게시글 작성</h1>
+      <div class="main">
+        <input
+          class="input is-primary post_title"
+          type="text"
+          id="postTitle"
+          placeholder="제목"
+        />
+        <textarea
+          class="textarea post_detail"
+          id="postContent"
+          placeholder="내용"
+          rows="10"
+        ></textarea>
+      </div>
+      <button class="button" type="submit">작성</button>
+    </form>
+  </body>
+  <script
+    src="https://code.jquery.com/jquery-3.7.1.js"
+    integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+    crossorigin="anonymous"
+  ></script>
+  <script>
+    $(document).ready(function () {
+      $("#postForm").submit(function (event) {
+        event.preventDefault(); // 기본 폼 제출 동작 방지
 
-      const title = $('#postTitle').val();
-      const content = $('#postContent').val();
+        const title = $("#postTitle").val();
+        const content = $("#postContent").val();
 
-      $.ajax({
-        type: 'POST',
-        url: '/create_post', // 게시글 작성 엔드포인트
-        data: {
-          title: title,
-          content: content
-        },
-        success: function(response) {
-          // 게시글 작성 성공 시 처리
-          alert('게시글 작성 완료');
-          window.location.href = '/'; 
-        },
-        error: function(error) {
-          // 게시글 작성 실패 시 처리
-          console.error(error);
-          alert('게시글 작성 중 오류 발생');
-        }
+        $.ajax({
+          type: "POST",
+          url: "/create_post", // 게시글 작성 엔드포인트
+          data: {
+            title: title,
+            content: content,
+          },
+          success: function (response) {
+            // 게시글 작성 성공 시 처리
+            alert("게시글 작성 완료");
+            window.location.href = "/";
+          },
+          error: function (error) {
+            // 게시글 작성 실패 시 처리
+            console.error(error);
+            alert("게시글 작성 중 오류 발생");
+          },
+        });
       });
     });
-  });
-</script>
+  </script>
 </html>
