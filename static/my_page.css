@@ -3,7 +3,6 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-<<<<<<< HEAD
   font-family: "Jua", sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -11,17 +10,12 @@ body {
 
 .box {
   width: 500px;
-=======
-}
 
-.box {
-  width: 600px;
->>>>>>> f428aaee4c3fbfb23764a6c6f4559233327f4f11
   height: 700px;
   display: flex;
   flex-direction: column;
   align-items: center;
-<<<<<<< HEAD
+
   border: 2px solid black;
   box-shadow: none;
   background-image: url(./img/grass.jpg);
@@ -32,20 +26,13 @@ body {
 
 .header {
   width: 450px;
-=======
-  border: 2px solid brown;
-}
 
-.header {
-  width: 500px;
->>>>>>> f428aaee4c3fbfb23764a6c6f4559233327f4f11
   display: flex;
   flex-direction: row;
   justify-content: end;
   margin-bottom: 20px;
 }
 
-<<<<<<< HEAD
 .prev,
 .logout {
   color: black;
@@ -66,7 +53,8 @@ body {
   overflow-y: auto;
 }
 
-.main_title, .main_subtitle {
+.main_title,
+.main_subtitle {
   width: 420px;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -79,15 +67,3 @@ body {
   margin-bottom: 5px;
   padding-bottom: 5px;
 }
-=======
-.prev, .logout {
-  color: black;
-}
-
-.my_post {
-    margin: 20px 0px;
-    width: 500px;
-    height: 300px;
-    overflow-y: auto;
-}
->>>>>>> f428aaee4c3fbfb23764a6c6f4559233327f4f11
