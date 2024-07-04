@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<<<<<<< Updated upstream
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -27,3 +28,57 @@
     </form>
   </body>
 </html>
+=======
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>게시글 작성</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.1/css/bulma.min.css" />
+  <link rel="stylesheet" href="{{ url_for('static',filename='./css/my_page.css') }}" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="box">
+    <div class="header">
+      <button class="button">
+        <a class="prev" href='/'>이전</a>
+      </button>
+    </div>
+    <h1 class="title is-1">내 게시글</h1>
+    <div class="main">
+      {% for item in posts %}
+      <div class="my_post">
+        <a href="/post/{{ item._id }}">
+          <h1 class="title main_title is-4">{{ item.title }}</h1>
+        </a>
+        <a href="/post/{{ item._id }}">
+          <h2 class="subtitle main_subtitle">{{ item.text }}</h2>
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+    <button class="button tail">
+      <a class="logout" onclick="logout()">로그아웃</a>
+    </button>
+  </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+  crossorigin="anonymous"></script>
+<script>
+  function logout() {
+    $.ajax({
+      type: 'POST',
+      url: '/logout',
+      success: function (response) {
+        window.location.href = '/login';
+      },
+    });
+  }
+</script>
+
+</html>
+>>>>>>> Stashed changes
